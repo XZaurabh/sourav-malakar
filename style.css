@@ -517,15 +517,24 @@ a {
   gap: 10px;
 }
 .stack-item i {
-  font-size: 2.2rem;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+  font-size: 1.6rem; /* Shrinked from 2.2rem */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  margin-bottom: 2px;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease, background 0.3s;
 }
 .stack-item:hover i {
-  transform: scale(1.15);
-  filter: drop-shadow(0 0 8px currentColor);
+  transform: translateY(-3px) scale(1.1);
+  filter: drop-shadow(0 0 10px currentColor);
+  background: rgba(255, 255, 255, 0.06);
 }
 .stack-item span {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--nav-color);
   transition: color 0.3s;
 }

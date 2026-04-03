@@ -37,6 +37,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 /* Hide scrollbar across all browsers */
@@ -161,7 +162,7 @@ a {
   color: var(--text-main);
   background-color: var(--nav-color); /* Using muted for bg as per screenshot */
   background: rgba(255, 255, 255, 0.1);
-  padding: 10px 20px;
+  padding: 8px 16px;
   border-radius: 30px;
   transition: background 0.3s ease;
 }
@@ -174,8 +175,10 @@ a {
   background: none;
   border: none;
   color: var(--text-main);
-  font-size: 1.5rem;
+  font-size: 1.5rem; /* Restored to slightly larger for better touch */
+  padding: 10px;
   cursor: pointer;
+  margin-right: -10px; /* Offset padding for alignment */
 }
 
 /* Mobile Nav Overlay */

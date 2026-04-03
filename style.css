@@ -623,22 +623,6 @@ a {
   cursor: pointer;
 }
 
-.click-pulse {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(109, 162, 252, 0.3);
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%) scale(0);
-  animation: pulse-grow 0.6s ease-out forwards;
-  z-index: 9999;
-}
-
-@keyframes pulse-grow {
-  0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
-  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
-}
 .timeline-card {
   flex: 1;
   background: rgba(255, 255, 255, 0.04);

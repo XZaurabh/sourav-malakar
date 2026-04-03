@@ -139,7 +139,7 @@ a {
   gap: 12px;
 }
 .nav-links a {
-  font-size: 0.55rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   color: var(--nav-color);
@@ -159,7 +159,7 @@ a {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.55rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--text-main);

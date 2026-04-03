@@ -105,22 +105,19 @@ a {
    ========================================================================== */
 .header {
   position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 1200px;
-  height: 60px;
-  padding: 0 30px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  padding: 0 5%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 1000;
-  background: var(--glass-bg);
+  background: rgba(5, 5, 8, 0.85);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--glass-border);
-  border-radius: 40px;
+  border-bottom: 1px solid var(--glass-border);
 }
 
 .logo a {
@@ -515,10 +512,19 @@ a {
 }
 .stack-item i {
   font-size: 2.2rem;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.3s ease;
+}
+.stack-item:hover i {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 8px currentColor);
 }
 .stack-item span {
   font-size: 0.8rem;
   color: var(--nav-color);
+  transition: color 0.3s;
+}
+.stack-item:hover span {
+  color: var(--text-main);
 }
 .text-blue { color: #3b82f6; }
 .text-green { color: #10b981; }
@@ -736,6 +742,7 @@ a {
 .project-card:nth-child(6) .proj-icon { color: #fbbf24; } /* Time Hub */
 .project-card:nth-child(7) .proj-icon { color: #818cf8; } /* Cosmic Gradient */
 .project-card:nth-child(8) .proj-icon { color: #f97316; } /* Sculptor Pro */
+.project-card:nth-child(9) .proj-icon { color: #ec4899; } /* Cloth Engine */
 
 .project-card .external-link {
   position: absolute;

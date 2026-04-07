@@ -3,31 +3,31 @@
    ========================================================================== */
 
 :root {
-  --bg-color: #050508;
-  --glass-bg: rgba(255, 255, 255, 0.04);
-  --glass-border: rgba(255, 255, 255, 0.05);
-  --glass-blur: blur(16px);
-  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  
-  --card-bg: #16161a;
-  --card-border: #222228;
-  --item-bg: #202026;
-  --item-border: #32353d;
+  --bg-color: #111319;
+  --card-bg: #1a1d26;
+  --card-border: #262a35;
+  --item-bg: #212531;
+  --item-border: #323746;
   
   --text-main: #ffffff;
   --text-muted: #8b8b9e;
   --text-dark: #000000;
   --nav-color: #8c9098;
+  
   --accent-pill: #1f2125;
   --accent-pill-hover: #2a2d33;
   --accent-blue: #6a74ee;
-  --accent-blue-glow: rgba(106, 116, 238, 0.5);
   
-  --font-main: 'Montserrat', sans-serif;
-  --font-cursive: 'Playfair Display', serif;
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --glass-text: rgba(255, 255, 255, 0.02);
   
+  --font-main: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-cursive: 'Outfit', sans-serif; /* Uncluttered */
   --header-height: 80px;
 }
+
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -54,12 +54,18 @@ body {
   background-color: var(--bg-color);
   color: var(--text-main);
   font-family: var(--font-main);
-  line-height: 1.6;
+  line-height: 1.5;
+  font-size: 15px;
   overflow-x: hidden;
   min-height: 100vh;
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and Consumer Edge */
-  user-select: none; /* Standard syntax */
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.sub-label, .tile-label, .tile-sync, .l-name, .watermark, .proj-label, .year-pill, .school, .stat-name, .stat-val, .section-title h3, 
+.box-expertise h4, .timeline-card h4, .project-card h4 {
+  font-family: var(--font-mono);
 }
 
 /* BACKGROUND GLOWS */
@@ -68,10 +74,10 @@ body {
   width: 50vw;
   height: 50vw;
   border-radius: 50%;
-  filter: blur(100px);
+  filter: blur(140px);
   z-index: -1;
   pointer-events: none;
-  opacity: 0.15;
+  opacity: 0.3;
 }
 .bg-glow-1 {
   top: -10%;
@@ -163,14 +169,14 @@ a {
   font-weight: 700;
   letter-spacing: 0.1em;
   color: var(--text-main);
-  background-color: var(--nav-color); /* Using muted for bg as per screenshot */
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
   padding: 4px 10px;
   border-radius: 30px;
-  transition: background 0.3s ease;
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
 }
 .resume-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--glass-border);
 }
 
 .menu-btn {
@@ -255,7 +261,26 @@ a {
 }
 
 .hero-subtitle {
-  color: var(--text-main);
+  background: linear-gradient(
+    to right, 
+    #ffffff 20%, 
+    #8b8b9e 40%, 
+    #8b8b9e 60%, 
+    #ffffff 80%
+  );
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+  text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 6s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
 }
 
 .hero-middle {
@@ -290,10 +315,11 @@ a {
   background-color: var(--text-main);
   color: var(--text-dark);
   font-weight: 700;
-  padding: 16px 36px;
+  height: 52px;
   border-radius: 40px;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   font-size: 0.95rem;
   transition: transform 0.3s ease, background-color 0.3s;
@@ -304,10 +330,11 @@ a {
 }
 
 .social-links {
+  height: 52px;
   display: flex;
   align-items: center;
   background-color: var(--accent-pill);
-  padding: 5px 15px;
+  padding: 0 10px;
   border-radius: 40px;
 }
 
@@ -330,9 +357,6 @@ a {
   border-radius: 40px;
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-  background: var(--glass-bg);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--glass-border);
 }
 
 .hero-image {
@@ -361,35 +385,38 @@ a {
   margin-bottom: 50px;
 }
 .section-title h3 {
-  font-size: 2rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.4em;
   color: var(--nav-color);
-  font-weight: 800;
+  margin-bottom: 5px;
   text-transform: uppercase;
-  margin-bottom: -10px;
 }
 .section-title h2 {
-  font-size: 3.5rem;
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
   color: var(--text-main);
-  font-weight: 900;
   text-transform: uppercase;
 }
 .title-underline {
-  width: 80px;
+  width: 50px;
   height: 4px;
-  background: linear-gradient(90deg, var(--accent-blue), #ba54e6);
-  border-radius: 2px;
-  margin-top: 10px;
+  background: var(--accent-blue);
+  margin-top: 15px;
+  border-radius: 4px;
+}
+body.light-mode .title-underline {
+  opacity: 0.7;
 }
 
 /* ==========================================================================
    COMMON CARD STYLES
    ========================================================================== */
 .card {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 28px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
   padding: 35px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 15px rgba(106, 116, 238, 0.05);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, background 0.3s ease;
@@ -398,28 +425,30 @@ a {
   padding: 22px 25px;
 }
 .card.compact h4 {
-  margin-bottom: 12px;
+  margin-bottom: 0;
   font-size: 1.2rem;
-}
-.card.compact .sub-label {
-  margin-bottom: 15px;
-  font-size: 0.7rem;
+  font-family: var(--font-mono);
 }
 
+
 .card h4 {
-  font-size: 1.4rem;
+  font-family: var(--font-main);
+  font-size: 1.1rem;
   font-weight: 800;
-  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   color: var(--text-main);
+  margin-bottom: 0;
 }
 .card .sub-label {
   display: block;
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.35em;
   color: var(--nav-color);
-  margin-top: -15px;
-  margin-bottom: 20px;
+  margin-top: -4px;
+  margin-bottom: 15px;
   text-transform: uppercase;
+  font-size: 0.6rem;
+  opacity: 0.8;
 }
 .icon-box {
   width: 50px;
@@ -499,18 +528,51 @@ a {
 }
 
 .phil-item i {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--accent-blue);
-  margin-bottom: 15px;
+  margin-bottom: 12px;
 }
 .phil-item h5 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 8px;
+  font-family: var(--font-main);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-main);
+  margin-top: auto;
+  margin-bottom: 5px;
 }
 .phil-item p {
-  font-size: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* Skills Tiles Sync */
+.tile-content i {
+  font-size: 1.4rem;
+  color: var(--p-accent);
+  transition: all 0.3s ease;
+}
+.skill-tile:hover .tile-content i {
+  transform: scale(1.1);
+}
+.tile-label {
+  font-family: var(--font-main);
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--text-main);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: auto;
+  margin-bottom: 5px;
+}
+.tile-sync {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
   color: var(--nav-color);
+  opacity: 0.8;
 }
 .phil-item .icon-text {
   position: absolute;
@@ -531,8 +593,8 @@ a {
 .skill-tile {
   position: relative;
   height: 110px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: 12px;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -540,7 +602,7 @@ a {
 }
 .skill-tile:hover {
   transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--glass-bg);
   border-color: var(--p-accent);
 }
 .tile-bg {
@@ -548,8 +610,8 @@ a {
   top: 0; left: 0;
   width: 100%; height: 100%;
   background: 
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(90deg, var(--glass-border) 1px, transparent 1px),
+    linear-gradient(var(--glass-border) 1px, transparent 1px);
   background-size: 15px 15px;
   opacity: 0.4;
 }
@@ -617,10 +679,10 @@ a {
 }
 
 .stack-inner-block, .languages-inner-block {
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--glass-bg);
   padding: 22px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
 }
 
 .stack-grid.compact {
@@ -721,9 +783,13 @@ a {
   background: rgba(255, 255, 255, 0.06);
 }
 .stack-item span {
-  font-size: 0.75rem;
-  color: var(--nav-color);
-  transition: color 0.3s;
+  font-family: var(--font-main);
+  font-size: 0.65rem;
+  font-weight: 900;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s;
 }
 .stack-item:hover span {
   color: var(--text-main);
@@ -754,12 +820,12 @@ a {
 .stat-val { font-family: monospace; font-weight: bold; color: var(--text-main); }
 
 .languages-section {
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: var(--glass-bg);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   padding: 20px;
   border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
 }
 .lang-header {
   font-size: 0.9rem;
@@ -825,9 +891,7 @@ a {
   opacity: 1;
   transform: scale(1);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-              background-color 0.4s ease, 
-              box-shadow 0.4s ease, 
-              opacity 0.4s ease;
+                opacity 0.4s ease;
   cursor: pointer;
 }
 
@@ -856,42 +920,49 @@ a {
 .timeline-card .watermark {
   position: absolute;
   top: 10px;
-  right: 15px;
-  font-size: 6rem;
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.02);
-  line-height: 1;
-  z-index: 0;
-  transition: transform 0.5s ease, color 0.5s ease;
+  right: 20px;
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--glass-text);
+  z-index: -1;
+  user-select: none;
+  font-family: inherit;
 }
 .timeline-item:hover .timeline-card .watermark {
   transform: scale(1.05);
-  color: rgba(255, 255, 255, 0.04);
+  color: var(--glass-text);
 }
 .timeline-card .year-pill {
   display: inline-block;
-  background-color: #212638;
+  background-color: var(--item-bg);
   color: #6da2fc;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   font-weight: bold;
   padding: 4px 12px;
   border-radius: 12px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   position: relative; z-index: 1;
+  border: 1px solid var(--item-border);
 }
 .timeline-card h4 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  font-weight: 700;
   margin-bottom: 8px;
   position: relative; z-index: 1;
 }
 .timeline-card .school {
   color: var(--nav-color);
-  font-size: 0.95rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   margin-bottom: 20px;
   display: flex;
   align-items: center;
   gap: 8px;
   position: relative; z-index: 1;
+  opacity: 0.8;
 }
 .timeline-card p {
   color: #aeb4be;
@@ -955,20 +1026,22 @@ a {
   opacity: 0.5;
 }
 .project-card h4 {
-  font-size: 1.05rem;
-  font-weight: 800;
+  font-size: 1.1rem;
+  font-weight: 700;
   margin-bottom: 4px;
   color: #ffffff;
 }
 .project-card .proj-label {
-  font-size: 0.55rem;
-  letter-spacing: 0.12em;
-  color: #4b4b5c;
+  font-size: 0.6rem;
+  letter-spacing: 0.35em;
+  color: var(--nav-color);
+  opacity: 0.7;
   display: flex;
   align-items: center;
   gap: 8px;
   text-transform: uppercase;
   font-weight: 700;
+  margin-top: 5px;
 }
 .project-card .line-dash {
   width: 18px;
@@ -1098,12 +1171,27 @@ a {
   }
   
   .hero-actions {
-    flex-direction: column;
+    flex-direction: row;
     gap: 15px;
+    justify-content: center;
+  }
+  .explore-btn, .social-links {
+    height: 48px;
+    padding: 0 20px;
+    font-size: 0.85rem;
+  }
+  .social-links a {
+    padding: 10px 8px;
+    font-size: 1rem;
   }
   
+  .hero-title, .hero-subtitle {
+    font-size: clamp(2.6rem, 12.5vw, 5rem);
+    white-space: nowrap;
+    letter-spacing: -0.06em;
+  }
   .section-title h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
   
   .timeline-item {
